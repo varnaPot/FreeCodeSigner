@@ -1,0 +1,93 @@
+FREE CODE SIGNER – FREEWARE LICENSE
+===================================
+
+Copyright © 2026 RED ZION d.o.o.
+https://www.varnapot.si
+
+Free Code Signer is proprietary freeware.
+
+PERMITTED USE
+-------------
+You may use Free Code Signer free of charge for personal, educational,
+professional and commercial purposes.
+
+REDISTRIBUTION
+--------------
+You may copy and redistribute the software only in its original,
+unmodified form and with all accompanying copyright, license and
+publisher information intact.
+
+RESTRICTIONS
+------------
+Unless you have prior written permission from RED ZION d.o.o., you may not:
+
+- modify, adapt or create derivative versions of the software;
+- remove or alter copyright, publisher or license information;
+- repackage or distribute a modified copy of the software;
+- sell, sublicense or distribute the software under another name;
+- reverse engineer, decompile or disassemble the software, except to the
+  extent that such a restriction is prohibited by applicable law.
+
+SOURCE CODE
+-----------
+The source code is proprietary and is not publicly distributed.
+
+NO WARRANTY
+-----------
+The software is provided "as is", without warranty of any kind, express
+or implied.
+
+To the maximum extent permitted by applicable law, RED ZION d.o.o. shall
+not be liable for damages arising from the use, inability to use, copying
+or redistribution of the software.
+
+
+------------------------------------------------------------
+SLOVENŠČINA
+------------------------------------------------------------
+
+
+FREE CODE SIGNER – LICENCA ZA BREZPLAČNO PROGRAMSKO OPREMO
+===========================================================
+
+Copyright © 2026 RED ZION d.o.o.
+https://www.varnapot.si
+
+Free Code Signer je lastniška brezplačna programska oprema (freeware).
+
+DOVOLJENA UPORABA
+-----------------
+Free Code Signer lahko brezplačno uporabljate za osebne, izobraževalne,
+profesionalne in poslovne namene.
+
+RAZŠIRJANJE
+-----------
+Program lahko kopirate in razširjate samo v njegovi izvirni,
+nespremenjeni obliki ter skupaj z vsemi pripadajočimi podatki o
+avtorskih pravicah, licenci in izdajatelju.
+
+OMEJITVE
+--------
+Brez predhodnega pisnega dovoljenja družbe RED ZION d.o.o. ni dovoljeno:
+
+- spreminjati, prilagajati ali izdelovati izpeljanih različic programa;
+- odstranjevati ali spreminjati podatkov o avtorskih pravicah,
+  izdajatelju ali licenci;
+- prepakirati ali razširjati spremenjene različice programa;
+- prodajati, podlicencirati ali razširjati programa pod drugim imenom;
+- izvajati povratnega inženiringa, dekompilacije ali razstavljanja
+  programa, razen v obsegu, kjer takšne omejitve ne dovoljuje veljavna
+  zakonodaja.
+
+IZVORNA KODA
+------------
+Izvorna koda je lastniška in ni javno distribuirana.
+
+BREZ JAMSTVA
+------------
+Program je na voljo "tak, kot je", brez kakršnega koli izrecnega ali
+implicitnega jamstva.
+
+V največjem obsegu, ki ga dovoljuje veljavna zakonodaja, družba
+RED ZION d.o.o. ne odgovarja za škodo, ki bi nastala zaradi uporabe,
+nezmožnosti uporabe, kopiranja ali razširjanja programske opreme.
