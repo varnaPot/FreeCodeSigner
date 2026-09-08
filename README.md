@@ -4,6 +4,10 @@
 
 Free Code Signer simplifies batch signing of Windows applications using Microsoft SignTool, YubiKey PIV, HSM devices and other compatible Code Signing solutions.
 
+## Screenshot
+
+![Free Code Signer – Windows Code Signing GUI](screenshots/fcs-main.png)
+
 ## Features
 
 - Batch signing of EXE, DLL, MSI and OCX files
