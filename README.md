@@ -4,37 +4,36 @@
 
 Free Code Signer is a Windows desktop application for local, hardware-backed and cloud-based code signing.
 
-It keeps the familiar Microsoft SignTool workflow while adding modern cloud/KMS/HSM options, JAR signing and easier batch signing of multiple file types.
+Version **1.7.1** focuses on stability, certificate inspection and large-batch reliability while retaining all major v1.7.0 cloud/HSM/JAR features.
 
-[Download v1.7.0](https://github.com/varnaPot/FreeCodeSigner/releases/tag/v1.7.0) · [English Help](HELP-EN.md) · [Slovenska pomoč](HELP-SL.md) · [varnaPot.si](https://www.varnapot.si/)
+[Download v1.7.1](https://github.com/varnaPot/FreeCodeSigner/releases/tag/v1.7.1) · [English Help](HELP-EN.md) · [Slovenska pomoč](HELP-SL.md) · [Changelog](CHANGELOG.md) · [varnaPot.si](https://www.varnapot.si/)
 
 > **Freeware:** Free Code Signer may be used and distributed free of charge according to `LICENSE.txt`.  
 > The source code is not distributed as part of the public release.
 
-## Free Code Signer v1.7.0
+## Free Code Signer v1.7.1
 
-![Free Code Signer v1.7.0](screenshots/fcs_170_1.png)
+![Free Code Signer](screenshots/fcs_170_1.png)
 
-## Highlights
+### What's new in v1.7.1
 
-- Microsoft SignTool / Windows Certificate Store
-- Azure Artifact Signing
-- Google Cloud KMS
-- Jsign integration
-- HSM, PKCS#11 and compatible hardware-backed signing
-- YubiKey / PIV workflows
-- Java JAR signing via `jarsigner`
-- Batch signing of multiple supported file types
-- Standard, Extended, Extended + JAR and Custom file profiles
-- Timestamping and signature verification
-- Built-in offline Help with **F1**
-- **25 interface languages**
-- Last selected language is remembered automatically
-- Sensitive credentials do not need to be stored in the normal application configuration
+- Right-click a file to **open its location** in Windows Explorer.
+- Right-click a signed file to **show its signing certificate**.
+- A new certificate-details button next to the selected Windows certificate opens extended certificate information.
+- Certificate details include Subject, Issuer, validity, serial number, SHA-1, SHA-256, public key, signature algorithm, private-key availability, EKU and certificate-chain status.
+- Signed JAR certificate display is supported when JDK/keytool is available.
+- SignTool non-zero exit codes are no longer treated as an automatic failure of every file in a batch.
+- Files are re-verified after ambiguous SignTool/provider errors and correctly recovered when the expected signature was actually written.
+- This improves YubiKey/PIV, smart-card and HSM workflows.
+- Large-batch verification no longer needs to launch one SignTool process per file.
+- Live CLI output is buffered and the visible console is bounded for better UI stability on large jobs.
+- Unexpected exceptions are written to `%LOCALAPPDATA%\FreeCodeSigner\CrashLogs`.
+- Built-in Help was extended with certificate/file actions and crash-log guidance.
+- All new v1.7.1 strings are localized in all **25 interface languages**.
 
 ## Signing methods
 
-Free Code Signer v1.7.0 supports several signing methods from the same interface.
+Free Code Signer supports several signing methods from the same interface.
 
 ![Signing method selection](screenshots/fcs_170_6_signing_method.png)
 
@@ -99,7 +98,7 @@ Timestamping can preserve the validity of a signature after the signing certific
 
 ## Built-in Help
 
-Version 1.7.0 includes complete offline help directly in the application.
+Free Code Signer includes complete offline help directly in the application.
 
 Press **F1** or click **Help**.
 
@@ -116,6 +115,8 @@ The help covers:
 - file profiles
 - timestamping
 - signature verification
+- certificate and file actions
+- crash logs
 - troubleshooting
 - security
 
@@ -134,13 +135,21 @@ Bulgarian, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, G
 
 The selected language is remembered between application sessions.
 
-English interface:
+## Stability and verification
 
-![English interface](screenshots/fcs_170_5_english.png)
+Free Code Signer verifies signatures after signing instead of relying only on the process exit code returned by the signing provider.
 
-## About
+This is particularly useful with hardware-backed signing, where a smart-card/HSM provider can occasionally return a non-zero status after a valid signature has already been written.
 
-![About Free Code Signer](screenshots/fcs_170_2_about.png)
+Version 1.7.1 also buffers live CLI output and bounds the visible console to improve stability during large signing jobs.
+
+## Crash diagnostics
+
+Unexpected application errors are written to:
+
+`%LOCALAPPDATA%\FreeCodeSigner\CrashLogs`
+
+The log contains diagnostic information intended to help identify unexpected UI or signing-workflow failures.
 
 ## Security
 
@@ -161,13 +170,13 @@ Requirements depend on the selected signing method:
 | Azure Artifact Signing | Azure account and configured Artifact Signing resources |
 | Google Cloud KMS | Google Cloud authentication/configuration and Jsign |
 | Jsign | Compatible Java runtime/Jsign setup and provider configuration |
-| JAR | Compatible JDK with `jarsigner` |
+| JAR | Compatible JDK with `jarsigner` / `keytool` |
 
 The original Windows Certificate Store / Microsoft SignTool workflow remains available.
 
 ## Download
 
-**[Download Free Code Signer v1.7.0](https://github.com/varnaPot/FreeCodeSigner/releases/tag/v1.7.0)**
+**[Download Free Code Signer v1.7.1](https://github.com/varnaPot/FreeCodeSigner/releases/tag/v1.7.1)**
 
 ## License
 
