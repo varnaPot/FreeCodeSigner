@@ -1,216 +1,209 @@
-# Free Code Signer v1.7.0 — Navodila za uporabo
+# Free Code Signer v1.7.1 — Navodila za uporabo
 
-[← Nazaj na README](README.md) · [English Help](HELP-EN.md) · [Prenos v1.7.0](https://github.com/varnaPot/FreeCodeSigner/releases/tag/v1.7.0)
+[← Nazaj na README](README.md) · [English Help](HELP-EN.md) · [Prenos v1.7.1](https://github.com/varnaPot/FreeCodeSigner/releases/tag/v1.7.1)
 
 ## 1. Hiter začetek
 
 1. Zaženi Free Code Signer.
-2. Izberi korensko mapo, v kateri so datoteke za podpis.
+2. Izberi korensko mapo z datotekami.
 3. Izberi način podpisovanja.
-4. Nastavi oziroma izberi certifikat ali ponudnika podpisovanja.
-5. Izberi profil datotek ali ročno uredi seznam končnic.
+4. Nastavi oziroma izberi certifikat ali ponudnika.
+5. Izberi profil datotek ali ročno uredi končnice.
 6. Po potrebi nastavi časovni žig.
 7. Skeniraj mapo.
-8. Preglej najdene datoteke in trenutno stanje podpisov.
+8. Preglej najdene datoteke in stanje podpisov.
 9. Začni podpisovanje.
-10. Preglej rezultat oziroma poročilo.
+10. Preglej rezultat in poročilo.
 
 ![Glavno okno](screenshots/fcs_170_1.png)
 
-## 2. Način podpisovanja
+## 2. Dejanja nad datotekami
 
-Izberi način, ki ustreza tvojemu okolju.
+Različica 1.7.1 dodaja uporabne možnosti ob desnem kliku na datoteko.
+
+### Odpri pot datoteke
+
+Z desnim klikom izberi **Odpri pot datoteke**. Windows Explorer odpre mapo in označi izbrano datoteko.
+
+### Prikaži potrdilo
+
+Če ima datoteka podpisni certifikat, je na voljo možnost **Prikaži potrdilo**.
+
+Če podpisnega certifikata ni, je možnost onemogočena.
+
+Pri podpisanih JAR datotekah je prikaz certifikata na voljo, kadar sta nastavljena JDK in `keytool`.
+
+## 3. Podrobnosti izbranega certifikata
+
+Ob izbranem Windows certifikatu je nov gumb za prikaz podrobnosti.
+
+Okno lahko prikaže:
+
+- komu je certifikat izdan,
+- izdajatelja,
+- obdobje veljavnosti,
+- serijsko številko,
+- SHA-1 thumbprint,
+- SHA-256 fingerprint,
+- algoritem in velikost javnega ključa,
+- algoritem podpisa certifikata,
+- informacijo o zasebnem ključu,
+- Enhanced Key Usage (EKU),
+- stanje verige certifikatov.
+
+Iz okna je mogoče odpreti tudi standardni Windows prikaz certifikata.
+
+## 4. Način podpisovanja
 
 ![Izbira načina podpisovanja](screenshots/fcs_170_6_signing_method.png)
 
 ### Microsoft SignTool / Windows Certificate Store
 
-Ta način uporabi za klasično Windows Authenticode podpisovanje.
-
-Primeri uporabe:
-
-- lokalno nameščen Code Signing certifikat
-- certifikat v Windows Certificate Store
-- certifikat na YubiKey/PIV
-- združljiv HSM, ki je Windowsu izpostavljen prek kriptografskega ponudnika
+Za klasično Windows Authenticode podpisovanje, vključno z združljivimi YubiKey/PIV in HSM certifikati.
 
 ### Azure Artifact Signing
 
-Azure Artifact Signing uporabi, kadar sta podpisna identiteta in zasebni ključ zaščitena v Microsoftovi cloud infrastrukturi.
+![Azure Artifact Signing](screenshots/fcs_170_8_azure.png)
 
-![Nastavitve Azure Artifact Signing](screenshots/fcs_170_8_azure.png)
-
-Nastavitve so odvisne od Azure signing resource/profile in načina prijave, ki ga uporablja tvoje okolje.
+Za podpisovanje z Microsoftovo cloud podpisno infrastrukturo.
 
 ### Google Cloud KMS
 
-Google Cloud KMS uporabi, kadar je zasebni podpisni ključ zaščiten v Google Cloud okolju.
+![Google Cloud KMS](screenshots/fcs_170_9_google.png)
 
-![Nastavitve Google Cloud KMS](screenshots/fcs_170_9_google.png)
-
-Za integracijo podpisnega postopka se uporablja Jsign.
+Za ključe, zaščitene v Google Cloud KMS. Jsign deluje kot povezovalni sloj.
 
 ### Jsign
 
-Generični način Jsign je namenjen združljivim KMS, HSM, PKCS#11, hardware-token in remote-signing okoljem.
-
 ![Nastavitve Jsign](screenshots/fcs_170_10_jsign.png)
 
-![Nastavitve ponudnika Jsign](screenshots/fcs_170_11_jsign.png)
-
-Dodatne možnosti:
+![Ponudnik Jsign](screenshots/fcs_170_11_jsign.png)
 
 ![Možnosti Jsign](screenshots/fcs_170_12_jsign_options.png)
 
-## 3. JAR datoteke
+Za združljive KMS, HSM, PKCS#11, hardware-token in remote-signing scenarije.
 
-Java `.jar` datoteke ne uporabljajo Windows Authenticode podpisovanja.
+## 5. JAR datoteke
 
-Free Code Signer jih zato obravnava z Java orodjem `jarsigner`.
+Java `.jar` datoteke ne uporabljajo Windows Authenticode.
+
+Free Code Signer jih podpisuje prek Java `jarsigner`.
 
 Potrebno je:
 
-- združljiv JDK
-- dostopen/nastavljen `jarsigner`
-- ustrezen dostop do certifikata oziroma ključa glede na izbrani način podpisovanja
+- združljiv JDK,
+- dostopen `jarsigner` in `keytool`,
+- ustrezen dostop do certifikata oziroma ključa.
 
-Profil **Razširjeno + JAR** omogoča, da JAR datoteke vključiš v isti delovni postopek z ostalimi tipi datotek, podpis pa se še vedno izvede z ustreznim Java mehanizmom.
-
-## 4. Profili datotek in končnice
-
-Uporabiš lahko prednastavljene profile ali seznam končnic urejaš ročno.
+## 6. Profili datotek
 
 ![Profili datotek](screenshots/fcs_170_13_extensions.png)
 
-### Standardno
+Na voljo so:
 
-Za najpogostejše Windows tipe datotek za Code Signing.
+- **Standardno**
+- **Razširjeno**
+- **Razširjeno + JAR**
+- **Po meri**
 
-### Razširjeno
+Ročno urejanje končnic ostane na voljo.
 
-Za širši nabor združljivih formatov.
-
-### Razširjeno + JAR
-
-Razširjenemu izboru doda Java JAR podpisovanje.
-
-### Po meri
-
-Za popoln ročni nadzor nad seznamom končnic.
-
-Ročno urejanje ostane na voljo tudi ob uporabi prednastavljenih profilov.
-
-## 5. Napredne nastavitve
-
-Nekateri ponudniki potrebujejo dodatne parametre.
+## 7. Napredne nastavitve
 
 ![Napredne nastavitve](screenshots/fcs_170_7_advanced_settings.png)
 
-Vnesi samo podatke, ki jih zahteva izbrani ponudnik. Kadar obstaja varnejši način prijave, se izogibaj shranjevanju skrivnosti v navadnem besedilu.
+Vnesi samo podatke, ki jih zahteva izbrani ponudnik. Gesel, PIN-ov in drugih skrivnosti ne shranjuj v navadnem besedilu, kadar je na voljo varnejši način avtentikacije.
 
-## 6. Časovni žig
-
-Zaupanja vreden časovni žig potrdi, kdaj je bila datoteka podpisana.
+## 8. Časovni žig
 
 ![Nastavitve časovnega žiga](screenshots/fcs_170_14_timestamp.png)
 
-Zakaj je pomemben:
+Za produkcijske podpise je časovni žig praviloma priporočljiv.
 
-- podpis lahko ostane veljaven tudi po poteku podpisnega certifikata
-- preverjanje lahko potrdi, da je bil certifikat ob času podpisa veljaven
-- za produkcijsko podpisovanje je časovni žig praviloma priporočljiv
+## 9. Preverjanje podpisa in nova logika v1.7.1
 
-Razpoložljivost in podprti algoritmi so odvisni od izbranega ponudnika in timestamp storitve.
+Free Code Signer po podpisovanju preveri **dejanski nastali podpis**.
 
-## 7. Preverjanje podpisa
+Če SignTool ali hardware provider vrne non-zero rezultat, FCS ne označi več avtomatsko celotnega batcha kot neuspešnega.
 
-Free Code Signer lahko preverja podpise pred in po podpisovanju.
+Namesto tega ponovno preveri prizadete datoteke:
 
-Rezultat vedno preveri, predvsem kadar:
+- če je pričakovani podpis veljaven, je datoteka obravnavana kot uspešno podpisana;
+- če podpis manjka oziroma ni veljaven, ostane rezultat napaka.
 
-- zamenjaš certifikat ali ponudnika
-- prvič nastavljaš cloud podpisovanje
-- začneš podpisovati nov tip datoteke
-- zamenjaš timestamp strežnik
-- prvič podpisuješ JAR datoteke
+To je posebej uporabno pri YubiKey/PIV, smart-card in HSM okoljih, kjer lahko provider v določenih primerih vrne napako tudi po tem, ko je bil veljaven podpis že zapisan.
 
-## 8. Vgrajena offline pomoč
+## 10. Stabilnost pri velikem številu datotek
+
+V1.7.1 vključuje več izboljšav:
+
+- CLI izpis se bufferira pred prikazom v WinForms UI;
+- velikost vidnega konzolnega izpisa je omejena;
+- fallback preverjanje ne zaganja več ločenega SignTool procesa za vsako datoteko;
+- nepričakovane izjeme se, kjer je mogoče, zapišejo v crash log.
+
+## 11. Crash logi
+
+Nepričakovane napake programa se zapisujejo v:
+
+`%LOCALAPPDATA%\FreeCodeSigner\CrashLogs`
+
+Če se program nepričakovano zapre, je za diagnostiko pomembna najnovejša datoteka iz te mape.
+
+## 12. Vgrajena offline pomoč
 
 Pritisni **F1** ali klikni **Pomoč**.
 
 ![Vgrajena pomoč](screenshots/fcs_170_3_help.png)
 
-Pomoč v programu deluje tudi brez internetne povezave.
+Pomoč deluje tudi brez internetne povezave.
 
-## 9. Jezik
+## 13. Jeziki
 
-Free Code Signer vključuje 25 jezikov uporabniškega vmesnika.
-
-![Izbira jezika](screenshots/fcs_170_4_languages.png)
-
-Zadnji izbrani jezik se samodejno shrani in obnovi ob naslednjem zagonu.
-
-Primer angleškega vmesnika:
-
-![Angleški uporabniški vmesnik](screenshots/fcs_170_5_english.png)
-
-Podprti jeziki:
+Free Code Signer vključuje 25 jezikov:
 
 bolgarščina, hrvaščina, češčina, danščina, nizozemščina, angleščina, estonščina, finščina, francoščina, nemščina, grščina, madžarščina, irščina, italijanščina, latvijščina, litovščina, malteščina, poljščina, portugalščina, romunščina, slovaščina, slovenščina, španščina, švedščina in ukrajinščina.
 
-## 10. Varnostna priporočila
+![Izbira jezika](screenshots/fcs_170_4_languages.png)
 
-Priporočeno:
+Zadnji izbrani jezik se samodejno obnovi ob naslednjem zagonu.
 
-- zasebne ključe pusti v Certificate Store, hardware tokenu, HSM ali cloud KMS
-- PIN-ov, gesel in client secretov ne objavljaj v screenshotih ali logih
-- kadar je mogoče uporabljaj kratkoživo/provider-managed avtentikacijo
-- pravice do cloud signing virov omeji po načelu najmanjših potrebnih pravic
-- pred objavo vedno preveri podpis končnih binarnih datotek
-- za produkcijske izdaje uporabljaj časovni žig
+## 14. Varnost
 
-Free Code Signer je zasnovan tako, da občutljivih podpisnih podatkov ni treba zapisovati v običajne nastavitve programa.
+Priporočamo:
 
-## 11. Pogoste težave
+- zasebne ključe hrani v Certificate Store, hardware tokenu, HSM ali cloud KMS;
+- PIN-ov, gesel in client secretov ne objavljaj v screenshotih ali logih;
+- za cloud vire uporabljaj načelo najmanjših potrebnih pravic;
+- pred objavo preveri digitalni podpis;
+- pri produkcijskih izdajah uporabljaj timestamp.
+
+## 15. Pogoste težave
 
 ### Certifikata ni mogoče najti
-
-- preveri, ali je certifikat dostopen trenutnemu uporabniku
-- preveri middleware za hardware token/HSM
-- preveri, ali je certifikat veljaven za Code Signing
-- po potrebi ponovno priklopi oziroma odklene napravo
+Preveri Windows Certificate Store, middleware hardware tokena/HSM in veljavnost certifikata.
 
 ### SignTool ni najden
-
-Namesti/nastavi Microsoft SignTool iz združljivega Windows SDK ali programu nastavi pravilno pot do izvršne datoteke.
+Namesti oziroma nastavi Microsoft SignTool iz združljivega Windows SDK.
 
 ### Jsign ni najden
+Preveri pot do Jsign in Java okolje.
 
-Preveri nastavljeno pot do Jsign in zahtevano Java okolje.
-
-### JDK / jarsigner ni najden
-
-Namesti združljiv JDK in preveri, ali je `jarsigner` dostopen.
+### JDK / jarsigner / keytool ni najden
+Namesti združljiv JDK.
 
 ### Azure prijava ne uspe
-
-Preveri Azure avtentikacijo, pravice, resource/profile nastavitve in omrežni dostop.
+Preveri avtentikacijo, pravice, resource/profile in omrežno povezavo.
 
 ### Google Cloud KMS prijava ne uspe
-
-Preveri Google Cloud prijavo, identifikatorje projekta/virov, pravice do ključa in Jsign nastavitve.
+Preveri Google Cloud prijavo, identifikatorje virov, pravice do ključa in Jsign nastavitve.
 
 ### Timestamp ne uspe
-
-Ponovi postopek, preveri internetno povezavo ter dostopnost in združljivost timestamp storitve.
-
-## 12. O programu
-
-![O programu](screenshots/fcs_170_2_about.png)
+Preveri internetno povezavo in dostopnost timestamp strežnika.
 
 ## Prenos
 
-**[Prenesi Free Code Signer v1.7.0](https://github.com/varnaPot/FreeCodeSigner/releases/tag/v1.7.0)**
+**[Prenesi Free Code Signer v1.7.1](https://github.com/varnaPot/FreeCodeSigner/releases/tag/v1.7.1)**
 
 ---
 
