@@ -178,6 +178,16 @@ The original Windows Certificate Store / Microsoft SignTool workflow remains ava
 
 **[Download Free Code Signer v1.7.1](https://github.com/varnaPot/FreeCodeSigner/releases/tag/v1.7.1)**
 
+## ☕ Support the project
+
+Free Code Signer is free to use and distribute.
+
+If you find the application useful and would like to support its continued development, you can buy me a coffee.
+
+<a href="https://www.buymeacoffee.com/varnapot20l" target="_blank">
+  <img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee%20%2F%20Thank%20you&emoji=&slug=varnapot20l&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" alt="Buy me a coffee / Thank you">
+</a>
+
 ## License
 
 Free Code Signer is **freeware** and may be used and distributed free of charge according to the included license terms.
